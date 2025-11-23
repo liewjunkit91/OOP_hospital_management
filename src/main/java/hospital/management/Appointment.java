@@ -1,4 +1,4 @@
-package org.example;
+package hospital.management;
 
 /**
  * Represents an appointment in the hospital management system.

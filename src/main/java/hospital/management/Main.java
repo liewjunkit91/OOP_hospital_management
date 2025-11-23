@@ -1,4 +1,4 @@
-package org.example;
+package hospital.management;
 
 /**
  * Main class to demonstrate the Hospital Management System.

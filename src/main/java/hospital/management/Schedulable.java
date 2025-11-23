@@ -1,4 +1,4 @@
-package org.example;
+package hospital.management;
 
 /**
  * Interface for entities that can schedule and manage appointments.
