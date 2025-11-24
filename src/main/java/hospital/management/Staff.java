@@ -65,9 +65,11 @@ public class Staff extends Person {
      */
     @Override
     public void displayInfo() {
-        System.out.println("===== Staff Information =====");
-        super.displayInfo();
-        System.out.println("Role: " + role);
-        System.out.println("Department: " + department);
+        String content = "Name: " + getName() + "\n" +
+                        "Age: " + getAge() + "\n" +
+                        "Contact: " + getContactDetails() + "\n" +
+                        "Role: " + role + "\n" +
+                        "Department: " + department;
+        DisplayUtility.printBox("Staff Information", content);
     }
 }

@@ -20,8 +20,10 @@ public class OutpatientRecord extends MedicalRecord{
 
     @Override
     public void displayRecord(){
-        System.out.println("Diagnosis: " + getDiagnosis());
-        System.out.println("Treatment Plan: " + getTreatmentPlan());
-        System.out.println("Visit Date: " + visitDate);
+        String content = "Record Type: Outpatient\n" +
+                        "Diagnosis: " + getDiagnosis() + "\n" +
+                        "Treatment Plan: " + getTreatmentPlan() + "\n" +
+                        "Visit Date: " + visitDate;
+        DisplayUtility.printBox("Outpatient Medical Record", content);
     }
 }

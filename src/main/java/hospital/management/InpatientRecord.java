@@ -31,9 +31,11 @@ public class InpatientRecord extends MedicalRecord{
 
     @Override
     public void displayRecord(){
-        System.out.println("Diagnosis: " + getDiagnosis());
-        System.out.println("Treatment Plan: " + getTreatmentPlan());
-        System.out.println("Room Number: " + roomNumber);
-        System.out.println("Duration of Stay: " + durationOfStay);
+        String content = "Record Type: Inpatient\n" +
+                        "Diagnosis: " + getDiagnosis() + "\n" +
+                        "Treatment Plan: " + getTreatmentPlan() + "\n" +
+                        "Room Number: " + roomNumber + "\n" +
+                        "Duration of Stay: " + durationOfStay + " days";
+        DisplayUtility.printBox("Inpatient Medical Record", content);
     }
 }

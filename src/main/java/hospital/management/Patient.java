@@ -13,6 +13,7 @@ public class Patient extends Person implements Schedulable {
     private String medicalHistory;
     private String diagnosis;
     private List<Appointment> appointments;
+    private List<MedicalRecord> medicalRecords;
 
     /**
      * Constructor to create a Patient object.
@@ -28,6 +29,7 @@ public class Patient extends Person implements Schedulable {
         this.medicalHistory = medicalHistory;
         this.diagnosis = diagnosis;
         this.appointments = new ArrayList<>();
+        this.medicalRecords = new ArrayList<>();
     }
 
     /**
@@ -65,16 +67,47 @@ public class Patient extends Person implements Schedulable {
     public void setDiagnosis(String diagnosis) {
         this.diagnosis = diagnosis;
     }
+    
+    /**
+     * Gets the list of appointments for the patient.
+     *
+     * @return List of appointments
+     */
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+    
+    /**
+     * Gets the list of medical records for the patient.
+     *
+     * @return List of medical records
+     */
+    public List<MedicalRecord> getMedicalRecords() {
+        return new ArrayList<>(medicalRecords);
+    }
+    
+    /**
+     * Adds a medical record to the patient's records.
+     *
+     * @param record The medical record to add
+     */
+    public void addMedicalRecord(MedicalRecord record) {
+        if (record != null && !medicalRecords.contains(record)) {
+            medicalRecords.add(record);
+        }
+    }
 
     /**
      * Displays the patient information including inherited Person details.
      */
     @Override
     public void displayInfo() {
-        System.out.println("---Patient Information---");
-        super.displayInfo();
-        System.out.println("Medical History: " + medicalHistory);
-        System.out.println("Diagnosis: " + diagnosis);
+        String content = "Name: " + getName() + "\n" +
+                        "Age: " + getAge() + "\n" +
+                        "Contact: " + getContactDetails() + "\n" +
+                        "Medical History: " + medicalHistory + "\n" +
+                        "Diagnosis: " + diagnosis;
+        DisplayUtility.printBox("Patient Information", content);
     }
 
     /**
@@ -112,16 +145,23 @@ public class Patient extends Person implements Schedulable {
      */
     @Override
     public void viewSchedule() {
-        System.out.println("=== Schedule for Patient: " + getName() + " ===");
+        DisplayUtility.printHeader("Schedule for Patient: " + getName());
         if (appointments.isEmpty()) {
-            System.out.println("No appointments scheduled.");
+            DisplayUtility.printMessage("No appointments scheduled", false);
         } else {
+            String[] headers = {"#", "Date", "Time", "Doctor", "Specialization"};
+            List<String[]> rows = new ArrayList<>();
             for (int i = 0; i < appointments.size(); i++) {
                 Appointment apt = appointments.get(i);
-                System.out.println((i + 1) + ". Date: " + apt.getDate() + 
-                                 ", Time: " + apt.getTime() + 
-                                 ", Doctor: " + apt.getDoctor().getName());
+                rows.add(new String[]{
+                    String.valueOf(i + 1),
+                    apt.getDate(),
+                    apt.getTime(),
+                    apt.getDoctor().getName(),
+                    apt.getDoctor().getSpecialization()
+                });
             }
+            DisplayUtility.printTable(headers, rows);
         }
     }
 }

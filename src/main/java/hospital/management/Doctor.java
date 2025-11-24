@@ -71,10 +71,12 @@ public class Doctor extends Person implements Schedulable {
      */
     @Override
     public void displayInfo() {
-        System.out.println("===== Doctor Information =====");
-        super.displayInfo();
-        System.out.println("Specialization: " + specialization);
-        System.out.println("Available: " + (availability ? "Yes" : "No"));
+        String content = "Name: " + getName() + "\n" +
+                        "Age: " + getAge() + "\n" +
+                        "Contact: " + getContactDetails() + "\n" +
+                        "Specialization: " + specialization + "\n" +
+                        "Available: " + (availability ? "Yes" : "No");
+        DisplayUtility.printBox("Doctor Information", content);
     }
 
     /**
@@ -117,16 +119,63 @@ public class Doctor extends Person implements Schedulable {
      */
     @Override
     public void viewSchedule() {
-        System.out.println("=== Schedule for Doctor: " + getName() + " ===");
+        DisplayUtility.printHeader("Schedule for Doctor: " + getName());
         if (appointments.isEmpty()) {
-            System.out.println("No appointments scheduled.");
+            DisplayUtility.printMessage("No appointments scheduled", false);
         } else {
+            String[] headers = {"#", "Date", "Time", "Patient", "Diagnosis"};
+            List<String[]> rows = new ArrayList<>();
             for (int i = 0; i < appointments.size(); i++) {
                 Appointment apt = appointments.get(i);
-                System.out.println((i + 1) + ". Date: " + apt.getDate() + 
-                                 ", Time: " + apt.getTime() + 
-                                 ", Patient: " + apt.getPatient().getName());
+                rows.add(new String[]{
+                    String.valueOf(i + 1),
+                    apt.getDate(),
+                    apt.getTime(),
+                    apt.getPatient().getName(),
+                    apt.getPatient().getDiagnosis()
+                });
             }
+            DisplayUtility.printTable(headers, rows);
         }
+    }
+    
+    /**
+     * Gets the list of appointments for the doctor.
+     *
+     * @return List of appointments
+     */
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+    
+    /**
+     * Updates the diagnosis of a patient.
+     * Validates that the doctor is available before updating.
+     *
+     * @param patient The patient whose diagnosis is being updated
+     * @param newDiagnosis The new diagnosis
+     * @return true if update successful, false otherwise
+     */
+    public boolean updatePatientDiagnosis(Patient patient, String newDiagnosis) {
+        if (patient == null) {
+            System.out.println("Error: Patient cannot be null");
+            return false;
+        }
+        
+        if (newDiagnosis == null || newDiagnosis.trim().isEmpty()) {
+            System.out.println("Error: Diagnosis cannot be empty");
+            return false;
+        }
+        
+        if (!availability) {
+            System.out.println("Error: Doctor " + getName() + " is not available");
+            return false;
+        }
+        
+        patient.setDiagnosis(newDiagnosis);
+        System.out.println("Diagnosis updated for patient " + patient.getName() + 
+                          " by Dr. " + getName());
+        System.out.println("New diagnosis: " + newDiagnosis);
+        return true;
     }
 }
