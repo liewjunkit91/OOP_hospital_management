@@ -8,6 +8,20 @@ This project is an INTI Diploma in Computer Science third semester (2025) group 
 |:---:|:---:|:---:|
 | [LinThit](https://github.com/LinThitHtwe)  | [JunKit](https://github.com/liewjunkit91)  | [Yuka](https://github.com/Yuka2608)  | 
 
+## Table of Contents
+
+- [Main Menu](#main-menu)
+- [Register Patient](#register-patient)
+- [Register Doctor](#register-doctor)
+- [Book Appointment](#book-appointment)
+- [Cancel Appointment](#cancel-appointment)
+- [View Doctor Schedule](#view-doctor-schedule)
+- [View Patient Schedule](#view-patient-schedule)
+- [Update Patient Diagnosis](#update-patient-diagnosis)
+- [View Medical Records](#view-medical-records)
+- [Display All Patients](#display-all-patients)
+- [Display All Doctors](#display-all-doctors)
+- [Display All Staffs](#display-all-staffs)
 
 ## Project Screenshots
 
