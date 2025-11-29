@@ -2,6 +2,13 @@
 
 This project is an INTI Diploma in Computer Science third semester (2025) group project consisting of 3 members. It's an Object-Oriented Programming (OOP) based Hospital Management System Console project. The project allows you to manage patients, doctors, appointments, and medical records.
 
+## Members
+
+| ![LinThitHtwe](https://github.com/LinThitHtwe.png) | ![JunKit](https://github.com/liewjunkit91.png) | ![Yuka](https://github.com/Yuka2608.png)
+|:---:|:---:|:---:|
+| [LinThit](https://github.com/LinThitHtwe)  | [JunKit](https://github.com/liewjunkit91)  | [Yuka](https://github.com/Yuka2608)  | 
+
+
 ## Project Screenshots
 
 ### Main Menu
